@@ -89,7 +89,7 @@ C:\Users\your_user> git init
 C:\Users\your_user> git submodule add link_to_repo themes/theme_name
 ```
 
-Todas las configuraciones de hugo se realizan atraves del archivo *config.toml*, alli se debe especificar el tema a utilizar y algunos otros parámetros del sitio que estamos creando. En este caso lo modificaremos para agregar la plantilla a utilizar. En este caso se agrega al archivo la siguiente línea: 
+Todas las configuraciones de hugo se realizan atraves del archivo *config.toml*, alli se debe especificar el tema a utilizar y algunos otros parámetros del sitio que estamos creando. Modificaremos el archivo para agregar la plantilla a utilizar con la siguiente linea: 
 
 `theme = "your_theme"`
 
@@ -116,7 +116,7 @@ Para crear un nuevo post se usa el comando:
 
 ## Configuraciones de Hugo
 
-En construcciones
+En construccion
 
 ## Shortcodes en Hugo
 
@@ -247,3 +247,38 @@ problemas encontrados actualmente se tienen:
   
 
 ## Deployment de hugo en github pages
+
+Para hacer el deployment de Hugo en una github page, debemos crear un repositiorio
+con el mismo nombre de nuestro usuario de github y la terminacion github.io, quedando de la siguiente manera: `<githubser>.github.io`
+
+Por otra parte debo crear otro repositorio en el cual se generaran los archivos con el contenido del blog este blog puede tener cualquier nombre en mi caso se llama `blog`.
+
+Ya creados, en el repositorio de Blog se utiliza el comando
+
+`git submodule add <repo_url>`
+
+Al crear el submodulo del repositorio principal, podemos hacer un commit de los cambios y un push para ya tener configurado nuestro repositorio remoto, si no de igual manera puedes continuar al siguiente paso, configurar el archivo `config.toml`
+
+En dicho archivo agregaremos lo siguiente: 
+
+```toml
+
+baseURL = "https://<github_username>.github.io/"
+languageCode = "en-us"
+title = "Your title"
+theme = "your-theme"
+publishDir = "<github_username>.github.io"
+
+```
+
+Lo mas importante de esta configuracion es el bseURL el cual indicara la pagina 
+o host que se colocara en los archivos de nuestros repos, y el paramtro de publishDir , el cual le indicara a hugo donde queremos que coloque los archivos generados al correr el comando `hugo`. En este caso lo seleccionamos para que apunte a nuestro submodulo, por lo cual cada vez que generemos los datos del blog y sus articulos, los mismos se copiaran en el repositiorio de las paginas de github y podrems hacerles commit directamente. 
+
+Ya con esto configurado como prueba podemos utilizar en el directorio raiz de nuestro blog
+
+`hugo --buildDrafts` 
+
+el cual generara dentro del submodulo <github_username>.github.io todos los archivos necesarios para la pagina estatica
+
+Otra cosa importante de destacar es que hugo por defecto si no se le especifica publishDir crea una carpeta `public` la cual es donde se generan los archivos para el deployment. Si no quisieramos cambiar este comportamiento, es posible 
+correr el comando `git submodule add <repo_url> public` de manera que la carpeta de nuestro submodulo se llame public, y los archivos generados se generen alli directamente
