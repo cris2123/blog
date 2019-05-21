@@ -1,3 +1,6 @@
 [submodule "developmentBlog/themes/cupper-hugo-theme"]
 	path = developmentBlog/themes/cupper-hugo-theme
 	url = https://github.com/cris2123/cupper-hugo-theme.git
+[submodule "developmentBlog/cris2123.github.io"]
+	path = developmentBlog/cris2123.github.io
+	url = https://github.com/cris2123/cris2123.github.io.git
