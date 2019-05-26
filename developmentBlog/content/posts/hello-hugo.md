@@ -268,7 +268,7 @@ Este nuevo repositorio se puede llamar de cualquier manera, en mi caso lo llamé
 
 Ya creado nuestros repositorios, debemos clonarlo en el directorio local que queramos para hacer modificaciones a los archivos que crearemos para nuestro blog y hacer algunas otras configuraciones pertinentes.
 
-{{< cmd >}}
+```bash
 
   mkdir blog
   
@@ -278,7 +278,7 @@ Ya creado nuestros repositorios, debemos clonarlo en el directorio local que que
 
   cd ../blog/
 
-{{< /cmd >}}
+```
 
 Donde <remote_url_blog> es el repositorio `blog` que creamos para guardar los post del blog
 y <remote_url_page> es el repositorio donde github almacena nuestra pagina `<githubser>.github.io`
@@ -361,8 +361,7 @@ Escribiremos algo en nuestro post y utilizaremos el comando
 Este último comando generará dentro de nuestro submodulo <github_username>.github.io todos los archivos necesarios para 
 la página estática.
 
-Por ultimo para actualizar nuestro repositorio remoto, entramos a nuestro submodulo <github_user>.github.io 
-y haces un git commit y git push de nuestros cambios. De alli, podremos visualizar la data desde nuestra página de github
+Por último para actualizar nuestro repositorio remoto, entramos a nuestro submodulo <github_user>.github.io y hacemos un git commit y git push de nuestros cambios. De alli, podremos visualizar la data desde nuestra página de github
 
 
 Otra cosa importante de destacar es que si a `hugo` no se le especifica el párametro `publishDir`, crea una carpeta llamada `public` en donde se generan los archivos para el deployment. Si no quisieramos cambiar este comportamiento, es posible correr el comando `git submodule add <repo_url> public` de manera que la carpeta de nuestro submodulo se llame `public`, y los archivos generados se guarden alli directamente.
